@@ -34,50 +34,28 @@
                 <input type="submit" id="answerButton" value="Ответить">
             </form>
             <?php
-                if (isset($_GET['question1']) && isset($_GET['question2']) && isset($_GET['question3']) && isset($_GET['question4'])) {
-                    $quest1 = $_GET["question1"];
-                    $score = 0;
-                    if ($quest1 == "лампочка") {
-                        echo '1 - Правильно';
-                        $score++;
-                    } else {
-                        echo '1 - Не правильно';
-                    }
-
-                    echo '<br>';
-
-                    $quest2 = $_GET["question2"];
-                    if ($quest2 == "ножницы") {
-                        echo '2 - Правильно';
-                        $score++;
-                    } else {
-                        echo '2 - Не правильно';
-                    }
-
-                    echo '<br>';
-
-                    $quest3 = $_GET["question3"];
-                    if ($quest3 == "арбуз") {
-                        echo '3 - Правильно';
-                        $score++;
-                    } else {
-                        echo '3 - Не правильно';
-                    }
-
-                    echo '<br>';
-
-                    $quest4 = $_GET["question4"];
-                    if ($quest4 == "снег") {
-                        echo '4 - Правильно';
-                        $score++;
-                    } else {
-                        echo '4 - Не правильно';
-                    }
-                    echo '<br>';
-
-                    echo 'Вы угадали ' . $score . ' загадок';
-                }
-            ?>
+		if (isset($_GET['question1']) && isset($_GET['question2'])) {
+		    function checkAnswer($answer, $rightAnswer, $questionNumber)
+		    {
+		        echo '<br>';
+		        if ($answer !== $rightAnswer) {
+		            echo "$questionNumber - Не правильно";
+		
+		            return 0;
+		        }
+		        echo "$questionNumber - Правильно";
+		
+		        return 1;
+		    }
+		
+		    $score = checkAnswer($_GET["question1"], "лампочка", 1)
+		        + checkAnswer($_GET["question2"], "ножницы", 2)
+		        + checkAnswer($_GET["question3"], "арбуз", 3)
+		        + checkAnswer($_GET["question4"], "снег", 4);
+		
+		    echo "<br><br>Вы угадали $score загадок";
+}
+?>
         </div>
     </div>
 </div>
