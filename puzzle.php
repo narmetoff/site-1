@@ -13,6 +13,7 @@
             <a href="guess-1.html">Угадайка</a> <span>/</span>
             <a href="guess-2.html">Угадайка мультиплеер</a>
         </div>
+        <h1>Личный сайт студента GeekBrains</h1>
     <div id="center">
         <h1>Игра в загадки</h1>
         <div id="box">
@@ -28,15 +29,14 @@
                 <input type="text" name= "question3" id="userAnswer3">
                 </div>
                 <div id="question4"><p>Бел, а не сахар, нет ног, а идет.</p>
-                <input type="text" name= "question1" id="userAnswer4">
+                <input type="text" name= "question4" id="userAnswer4">
                 </div>
                 <input type="submit" id="answerButton" value="Ответить">
             </form>
             <?php
-                if (isset($_GET['question1']) && isset($_GET['question2'])) {
+                if (isset($_GET['question1']) && isset($_GET['question2']) && isset($_GET['question3']) && isset($_GET['question4'])) {
                     $quest1 = $_GET["question1"];
                     $score = 0;
-
                     if ($quest1 == "лампочка") {
                         echo '1 - Правильно';
                         $score++;
@@ -73,7 +73,7 @@
                     } else {
                         echo '4 - Не правильно';
                     }
-                    echo '<br><br>';
+                    echo '<br>';
 
                     echo 'Вы угадали ' . $score . ' загадок';
                 }
